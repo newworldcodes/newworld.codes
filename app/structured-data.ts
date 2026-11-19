@@ -1,3 +1,4 @@
+import type { OpenSourceProject } from "./open-source";
 import {
 	appStoreUrl,
 	googlePlayUrl,
@@ -82,6 +83,24 @@ export function softwareApplication(p: Product) {
 		...(sameAs.length ? { sameAs } : {}),
 		publisher: PUBLISHER,
 		author: PUBLISHER,
+	};
+}
+
+/** An open-source project as schema.org SoftwareSourceCode. */
+export function sourceCodeJsonLd(p: OpenSourceProject) {
+	const repo = p.links.find((l) => l.href.includes("github.com"))?.href;
+	return {
+		"@type": "SoftwareSourceCode",
+		"@id": `${SITE}/open-source#${p.slug}`,
+		name: p.name,
+		description: p.summary,
+		url: `${SITE}/open-source#${p.slug}`,
+		...(repo ? { codeRepository: repo } : {}),
+		programmingLanguage: p.language,
+		license: `https://spdx.org/licenses/${p.license}.html`,
+		author: { "@id": FOUNDER["@id"] },
+		sourceOrganization: PUBLISHER,
+		sameAs: p.links.map((l) => l.href),
 	};
 }
 

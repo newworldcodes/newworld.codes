@@ -10,6 +10,7 @@ export const dynamic = "force-static";
 const pages: MetadataRoute.Sitemap = [
 	{ url: SITE, lastModified: "2026-11-19", changeFrequency: "monthly", priority: 1 },
 	{ url: `${SITE}/about`, lastModified: "2026-11-19", changeFrequency: "yearly", priority: 0.6 },
+	{ url: `${SITE}/open-source`, lastModified: "2026-11-19", changeFrequency: "monthly", priority: 0.7 },
 	{ url: `${SITE}/support`, lastModified: "2026-11-19", changeFrequency: "monthly", priority: 0.5 },
 	{ url: `${SITE}/privacy`, lastModified: "2026-11-19", changeFrequency: "yearly", priority: 0.3 },
 	{ url: `${SITE}/terms`, lastModified: "2026-11-19", changeFrequency: "yearly", priority: 0.3 },

@@ -180,6 +180,9 @@ export default function RootLayout({
 								<Link href="/about" className={footerLink}>
 									About
 								</Link>
+								<Link href="/open-source" className={footerLink}>
+									Open source
+								</Link>
 								<Link href="/support" className={footerLink}>
 									Support
 								</Link>

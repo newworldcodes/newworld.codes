@@ -47,6 +47,8 @@ const pageJsonLd = {
 			"TypeScript",
 			"Kotlin",
 			"Serverless architecture",
+			"Programming language design",
+			"Open source",
 			"Music",
 		],
 		nationality: { "@type": "Country", name: "United Kingdom" },
@@ -139,6 +141,18 @@ export default function AboutPage() {
 							came from. New World Code is where I build the tools I couldn&apos;t
 							find: a tab editor for my phone, a metronome for my runs and a
 							proper Markdown book editor for my Mac.
+						</p>
+						<p className="type-body leading-[1.7] text-muted">
+							I&apos;ve worked in the open for a long time, too. From 2015 to 2021
+							I ran{" "}
+							<Link href="/open-source#multicolour" className="inline-link">
+								Multicolour
+							</Link>
+							, a REST API generator for Node.js, and I&apos;m now designing{" "}
+							<Link href="/open-source#elp" className="inline-link">
+								Elp
+							</Link>
+							, a programming language for building native apps on every platform.
 						</p>
 						<ul className="flex flex-wrap gap-2 pt-1">
 							{profiles.map((profile) => (

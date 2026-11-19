@@ -7,6 +7,7 @@ import {
 	products,
 	statusLabel,
 } from "../products";
+import { openSource } from "../open-source";
 import { EMAIL, FOUNDER_LINKS, LEGAL_NAME, SITE } from "../structured-data";
 
 export const dynamic = "force-static";
@@ -24,6 +25,10 @@ export function GET() {
 		})
 		.join("\n");
 
+	const oss = openSource
+		.map((p) => `- [${p.name}](${SITE}/open-source#${p.slug}) (${p.years}, ${p.status.toLowerCase()}, ${p.license}): ${p.summary} Links: ${p.links.map((l) => l.href).join(", ")}.`)
+		.join("\n");
+
 	const body = `# New World Code
 
 > ${LEGAL_NAME} is an independent software company in the United Kingdom,
@@ -35,10 +40,15 @@ export function GET() {
 
 ${apps}
 
+## Open source
+
+${oss}
+
 ## Pages
 
 - [Home](${SITE}): the company and all its apps.
 - [About](${SITE}/about): the company and its founder, Dave Mackintosh.
+- [Open source](${SITE}/open-source): the history of Multicolour and the design of Elp.
 - [Support](${SITE}/support): contact, purchases, refunds, subscriptions, bug reports.
 - [Privacy Policy](${SITE}/privacy): what each app collects. Pacer and MD Book collect no data; no app uses analytics.
 - [Terms of Use](${SITE}/terms): licence, purchases and subscriptions, refunds, liability, governing law (England and Wales).

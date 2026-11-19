@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { openSource } from "./open-source";
 import ProductRow from "./product-row";
 import { products } from "./products";
 import SectionLabel from "./section-label";
@@ -65,6 +66,10 @@ const faqs = [
 		a: `Email ${EMAIL}. The support page has answers about purchases, refunds and restoring purchases.`,
 	},
 	{
+		q: "Does New World Code make open-source software?",
+		a: "Yes. It is designing Elp, a GPL-licensed programming language that compiles one codebase to native apps on every platform, and from 2015 to 2021 it ran Multicolour, a REST API and ORM generator for Node.js.",
+	},
+	{
 		q: "Is Melodist Studio part of New World Code?",
 		a: "Yes. Melodist Studio is a trading name of New World Code Ltd, with its own website at melodist.studio.",
 	},
@@ -128,6 +133,44 @@ export default function Home() {
 					{products.map((p) => (
 						<ProductRow key={p.slug} product={p} />
 					))}
+				</div>
+			</section>
+
+			{/* Open source */}
+			<section id="open-source" className="scroll-mt-4 border-t border-border">
+				<div className="mx-auto w-full max-w-[1440px] px-4 md:px-12">
+					<div className="flex items-center justify-between py-3.5 md:py-4.5">
+						<SectionLabel title="Open source" count={openSource.length} />
+						<Link href="/open-source" className="type-micro text-muted transition-colors hover:text-fg">
+							All projects →
+						</Link>
+					</div>
+					<div className="grid border-t border-border md:grid-cols-2">
+						{openSource.map((p, i) => (
+							<article
+								key={p.slug}
+								style={{ "--accent": p.accent } as React.CSSProperties}
+								className={`flex flex-col gap-4 py-7 md:py-11 ${
+									i > 0 ? "border-t border-border md:border-l md:border-t-0 md:pl-12" : "md:pr-12"
+								}`}
+							>
+								<div className="flex items-baseline justify-between gap-4">
+									<h3 className="type-display text-fg">{p.name}</h3>
+									<p className="type-micro-sm text-accent">
+										{p.status} · {p.years}
+									</p>
+								</div>
+								<p className="type-title leading-[1.45] text-fg">{p.tagline}</p>
+								<p className="type-body leading-[1.7] text-muted">{p.summary}</p>
+								<Link
+									href={`/open-source#${p.slug}`}
+									className="type-label flex h-11 items-center self-start border-b-[1.5px] border-accent pb-0.5 text-fg md:h-auto"
+								>
+									The {p.name} story →
+								</Link>
+							</article>
+						))}
+					</div>
 				</div>
 			</section>
 
