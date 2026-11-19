@@ -143,8 +143,11 @@ export const products: Product[] = [
 		tagline: "A running cadence metronome for iPhone and Apple Watch.",
 		summary:
 			"Pacer keeps your running cadence steady with a click and a haptic tap at the steps per minute you choose. It plays over your music or podcasts without pausing them, and keeps time on your wrist with Apple Watch.",
-		status: "development",
+		status: "live",
 		platforms: ["iPhone", "Apple Watch"],
+		appStoreId: "6802674068",
+		// No storefront in the path, so visitors land in their own country's store.
+		appStoreUrl: "https://apps.apple.com/app/pacer-run-cadence/id6802674068",
 		category: "HealthApplication",
 		requirements: "iOS 26.5 or later · watchOS 26.5 or later",
 		accent: "#f97316",
