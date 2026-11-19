@@ -68,8 +68,16 @@ export function softwareApplication(p: Product) {
 		operatingSystem: os.join(", "),
 		...(p.requirements ? { softwareRequirements: p.requirements } : {}),
 		...(p.screenshot ? { screenshot: absolute(p.screenshot.src) } : {}),
-		...(p.free && p.status === "live"
-			? { offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" } }
+		...(p.status === "live" && (p.free || p.price)
+			? {
+					offers: {
+						"@type": "Offer",
+						price: p.price?.amount ?? "0",
+						priceCurrency: p.price?.currency ?? "GBP",
+						...(appStoreUrl(p) ? { url: appStoreUrl(p) } : {}),
+						availability: "https://schema.org/InStock",
+					},
+				}
 			: {}),
 		...(sameAs.length ? { sameAs } : {}),
 		publisher: PUBLISHER,

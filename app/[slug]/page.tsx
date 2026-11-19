@@ -5,6 +5,7 @@ import {
 	appStoreUrl,
 	hostedHere,
 	platformList,
+	priceLabel,
 	products,
 	statusLabel,
 } from "../products";
@@ -94,6 +95,15 @@ export default async function ProductPage({
 							<dt className="type-micro-sm text-muted">Platforms</dt>
 							<dd className="type-body text-fg">{platformList(p)}</dd>
 						</div>
+						{priceLabel(p) && (
+							<div className="flex flex-col gap-1">
+								<dt className="type-micro-sm text-muted">Price</dt>
+								<dd className="type-body text-fg">
+									{priceLabel(p)}
+									{p.price ? " · one-off, no subscription" : ""}
+								</dd>
+							</div>
+						)}
 						{p.requirements && (
 							<div className="flex flex-col gap-1">
 								<dt className="type-micro-sm text-muted">Requires</dt>

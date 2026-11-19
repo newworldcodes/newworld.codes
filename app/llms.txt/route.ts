@@ -2,6 +2,7 @@ import {
 	appStoreUrl,
 	googlePlayUrl,
 	platformList,
+	priceLabel,
 	productUrl,
 	products,
 	statusLabel,
@@ -19,7 +20,7 @@ export function GET() {
 			const stores = [appStoreUrl(p) && `App Store: ${appStoreUrl(p)}`, googlePlayUrl(p) && `Google Play: ${googlePlayUrl(p)}`]
 				.filter(Boolean)
 				.join(". ");
-			return `- [${p.name}](${abs(productUrl(p))}): ${p.summary} Platforms: ${platformList(p)}. Status: ${statusLabel[p.status]}.${stores ? ` ${stores}.` : ""} Privacy: ${p.privacy}`;
+			return `- [${p.name}](${abs(productUrl(p))}): ${p.summary} Platforms: ${platformList(p)}. Status: ${statusLabel[p.status]}.${priceLabel(p) ? ` Price: ${priceLabel(p)}.` : ""}${stores ? ` ${stores}.` : ""} Privacy: ${p.privacy}`;
 		})
 		.join("\n");
 

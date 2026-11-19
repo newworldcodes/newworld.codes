@@ -24,6 +24,8 @@ export type Product = {
 	category: string;
 	/** Free to download. Undefined when pricing isn't settled. */
 	free?: boolean;
+	/** Up-front price, for paid apps. Amount as a string, e.g. "0.99". */
+	price?: { amount: string; currency: "GBP" | "USD" };
 	appStoreId?: string;
 	appStoreUrl?: string;
 	googlePlayId?: string;
@@ -145,6 +147,7 @@ export const products: Product[] = [
 			"Pacer keeps your running cadence steady with a click and a haptic tap at the steps per minute you choose. It plays over your music or podcasts without pausing them, and keeps time on your wrist with Apple Watch.",
 		status: "live",
 		platforms: ["iPhone", "Apple Watch"],
+		price: { amount: "0.99", currency: "GBP" },
 		appStoreId: "6802674068",
 		// No storefront in the path, so visitors land in their own country's store.
 		appStoreUrl: "https://apps.apple.com/app/pacer-run-cadence/id6802674068",
@@ -227,5 +230,14 @@ export const statusLabel: Record<Status, string> = {
 	review: "Coming soon",
 	development: "In development",
 };
+
+const currencySymbol = { GBP: "£", USD: "$" } as const;
+
+/** "Free", "£0.99", or undefined when there is no settled price. */
+export function priceLabel(p: Product) {
+	if (p.price) return `${currencySymbol[p.price.currency]}${p.price.amount}`;
+	if (p.free) return "Free";
+	return undefined;
+}
 
 export const platformList = (p: Product) => p.platforms.join(" · ");

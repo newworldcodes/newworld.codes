@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { platformList, productUrl, statusLabel, type Product } from "./products";
+import { platformList, priceLabel, productUrl, statusLabel, type Product } from "./products";
 
 /**
  * One product in the catalogue: name and status, what it is, and a picture
@@ -28,7 +28,7 @@ export default function ProductRow({ product: p }: { product: Product }) {
 					/>
 					<p className="type-micro-sm text-accent">
 						{statusLabel[p.status]}
-						{live && p.free ? " · free" : ""}
+						{live && priceLabel(p) ? ` · ${priceLabel(p)!.toLowerCase()}` : ""}
 					</p>
 				</div>
 			</div>
