@@ -152,7 +152,8 @@ export default function AboutPage() {
 							<Link href="/open-source#elp" className="inline-link">
 								Elp
 							</Link>
-							, a programming language for building native apps on every platform.
+							, a programming language for building native apps on every platform
+							(<a href="https://elplang.org" className="inline-link">elplang.org</a>).
 						</p>
 						<ul className="flex flex-wrap gap-2 pt-1">
 							{profiles.map((profile) => (

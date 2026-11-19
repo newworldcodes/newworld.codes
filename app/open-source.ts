@@ -17,6 +17,8 @@ export type OpenSourceProject = {
 	/** Longer account for /open-source, one paragraph per entry. */
 	story: string[];
 	facts: { label: string; value: string }[];
+	/** The project's own website, when it has one. Listed first everywhere. */
+	website?: string;
 	links: { label: string; href: string }[];
 	language: string;
 	license: string;
@@ -43,7 +45,9 @@ export const openSource: OpenSourceProject[] = [
 			{ label: "Inspired by", value: "SwiftUI, Jetpack Compose" },
 			{ label: "Design record", value: "18 specifications, 19 example programs" },
 		],
+		website: "https://elplang.org",
 		links: [
+			{ label: "elplang.org", href: "https://elplang.org" },
 			{ label: "github.com/elp-lang/elp", href: "https://github.com/elp-lang/elp" },
 			{ label: "Goals", href: "https://github.com/elp-lang/elp/blob/main/GOALS.md" },
 			{ label: "Design docs", href: "https://github.com/elp-lang/elp/tree/main/docs" },

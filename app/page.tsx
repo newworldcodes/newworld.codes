@@ -67,7 +67,7 @@ const faqs = [
 	},
 	{
 		q: "Does New World Code make open-source software?",
-		a: "Yes. It is designing Elp, a GPL-licensed programming language that compiles one codebase to native apps on every platform, and from 2015 to 2021 it ran Multicolour, a REST API and ORM generator for Node.js.",
+		a: "Yes. It is designing Elp (elplang.org), a GPL-licensed programming language that compiles one codebase to native apps on every platform, and from 2015 to 2021 it ran Multicolour, a REST API and ORM generator for Node.js.",
 	},
 	{
 		q: "Is Melodist Studio part of New World Code?",
@@ -162,12 +162,22 @@ export default function Home() {
 								</div>
 								<p className="type-title leading-[1.45] text-fg">{p.tagline}</p>
 								<p className="type-body leading-[1.7] text-muted">{p.summary}</p>
-								<Link
-									href={`/open-source#${p.slug}`}
-									className="type-label flex h-11 items-center self-start border-b-[1.5px] border-accent pb-0.5 text-fg md:h-auto"
-								>
-									The {p.name} story →
-								</Link>
+								<div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+									<Link
+										href={`/open-source#${p.slug}`}
+										className="type-label flex h-11 items-center border-b-[1.5px] border-accent pb-0.5 text-fg md:h-auto"
+									>
+										The {p.name} story →
+									</Link>
+									{p.website && (
+										<a
+											href={p.website}
+											className="type-label flex h-11 items-center border-b-[1.5px] border-border-strong pb-0.5 text-fg md:h-auto"
+										>
+											{new URL(p.website).hostname} →
+										</a>
+									)}
+								</div>
 							</article>
 						))}
 					</div>
